@@ -28,6 +28,20 @@
 							<executable>npm</executable>
 							<arguments>
 								<argument>install</argument>
+							</arguments>
+							<workingDirectory>src/main/webresources</workingDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>install pending dependencies</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>npm</executable>
+							<arguments>
+								<argument>install</argument>
 								<argument>karma</argument>
 								<argument>jasmine-core</argument>
 								<argument>phantomjs</argument>
