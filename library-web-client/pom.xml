@@ -19,6 +19,37 @@
 				<version>1.3.2</version>
 				<executions>
 					<execution>
+						<id>npm install</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>npm</executable>
+							<arguments>
+								<argument>install</argument>
+								<argument>karma</argument>
+								<argument>jasmine-core</argument>
+								<argument>phantomjs</argument>
+							</arguments>
+							<workingDirectory>src/main/webresources</workingDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>bower install</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>bower</executable>
+							<arguments>
+								<argument>install</argument>
+							</arguments>
+							<workingDirectory>src/main/webresources</workingDirectory>
+						</configuration>
+					</execution>
+					<execution>
 						<id>build application</id>
 						<goals>
 							<goal>exec</goal>
