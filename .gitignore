@@ -1,0 +1,11 @@
+**/.classpath
+**/.settings
+**/.project
+**/target
+
+
+**/webresources/bower_components
+**/webresources/dist
+**/webresources/node_modules
+**/webresources/.tmp
+**/webresources/.sass-cache
