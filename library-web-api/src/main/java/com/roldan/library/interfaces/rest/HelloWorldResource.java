@@ -9,6 +9,10 @@ import javax.ws.rs.core.Response;
 
 import com.roldan.library.application.Service;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value = "helloworld")
 @Path("helloworld")
 @Singleton
 public class HelloWorldResource {
@@ -18,6 +22,7 @@ public class HelloWorldResource {
 	
 	@GET
 	@Produces("application/json")
+	@ApiOperation(value = "Hello greeting", notes = "Get hello greeting")
 	public Response getHello() {
 		Greeting greeting = new Greeting(service.getGreeting(), "Jorge");
 		return Response.status(Response.Status.OK).entity(greeting).build(); 
