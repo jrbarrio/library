@@ -92,7 +92,7 @@
 			<artifactId>swagger-jersey2-jaxrs</artifactId>
 			<version>1.5.5</version>
 		</dependency>
-		
+
 	</dependencies>
 
 	<build>
@@ -104,11 +104,56 @@
 			<plugin>
 				<groupId>com.google.appengine</groupId>
 				<artifactId>appengine-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.github.kongchen</groupId>
+				<artifactId>swagger-maven-plugin</artifactId>
+				<version>3.1.0</version>
 				<configuration>
-					<jvmFlags>
-						<jvmFlag>-Dcom.google.appengine.devappserver_module.api.port=8081</jvmFlag>
-					</jvmFlags>
+					<apiSources>
+						<apiSource>
+							<springmvc>false</springmvc>
+							<locations>com.roldan.library.interfaces.rest</locations>
+							<schemes>http,https</schemes>
+							<host>localhost:8080</host>
+							<basePath>/s</basePath>
+							<info>
+								<title>Library</title>
+								<version>v1</version>
+								<description>Library</description>
+								<termsOfService></termsOfService>
+								<contact>
+									<email>jorge.roldan@gmail.com</email>
+									<name>Jorge Roldán</name>
+									<url>http://tratandodeentenderlo.blogspot.com.es/</url>
+								</contact>
+								<license>
+									<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+									<name>Apache 2.0</name>
+								</license>
+							</info>
+							<!-- Support classpath or file absolute path here. 1) classpath e.g: 
+								"classpath:/markdown.hbs", "classpath:/templates/hello.html" 2) file e.g: 
+								"${basedir}/src/main/resources/markdown.hbs", "${basedir}/src/main/resources/template/hello.html" -->
+							<templatePath>${basedir}/templates/strapdown.html.hbs</templatePath>
+							<outputPath>${project.build.directory}/${project.build.finalName}/swagger.html</outputPath>
+							<swaggerDirectory>${project.build.directory}/${project.build.finalName}/swagger-ui</swaggerDirectory>
+							<!-- <securityDefinitions>
+								<securityDefinition>
+									<json>/securityDefinitions.json</json>
+								</securityDefinition>
+							</securityDefinitions> -->
+						</apiSource>
+					</apiSources>
 				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
